@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSN</title>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- <script src="scripts/files.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ace.js"
+        integrity="sha512-NofUHaTd/uaO1GXfw0JvXptI9XdO5LLrfjl7jVqnFlbxdgqVlE3SmuXAUoqRTB5GQKd82yzhchaDlc6C6+SylA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-language_tools.min.js"
+        integrity="sha512-jfwY43zY1DbjmPr1t+eIZXvrl3mOaEZgBSSyE855/yQ+KVcmStG6sKNZKX50gLsso4oKs44uvc8FO1Ry+xTR2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-linking.min.js"
+        integrity="sha512-0iUnsGVQpZAZRSRIjdx53aCcXRpL2CPjOqH/zjAc+Gn3PC20geYCkoehhcjrTc6SPn6fxFK0jpCT9mDijE06cA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-modelist.min.js"
+        integrity="sha512-CzLp271oJZTV4Ys6dhyHvQat3UJUv7WwLkpnrVmNVMnCnaCYoccX1LFoz0ZfHP8O9HlkGwJ9S5+/8fG4v/6v1Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-options.min.js"
+        integrity="sha512-uoTr6zkAtDVkN4q7NhCXrkaB/C1MphreFHr1MPkFgbi6CYJ2Us+ADrzdsjQkDLiR0owZVL9prHo4767OdpPqQA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-prompt.min.js"
+        integrity="sha512-K+7aKiW/9YuP2rptIitIu3tMPrgRnVQD9nMl2sItTNb3SsCf9QtGPlleWiErEaYI0usvIZ1Z/jOxQHacyNBuvA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-spellcheck.min.js"
+        integrity="sha512-WZcpTDUP18VLkjTelh7ioIOcNOwtgCi7MaOcoN0VjglsiMc+V2JbyAbE0uJb1w0KPVdtl0aQ8vDhe8XKyM/TTQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-static_highlight.min.js"
+        integrity="sha512-N84vTkD3U3hPi50GfClKMA0/aHTIJfg9hpAfYTjCLi7p/ljSVUxEgERnsZOvbHQ8QDdevR52XpKDMTzUHDiLXw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.5.3/ext-emmet.min.js"
+        integrity="sha512-9mHdQOkcw0etgBYZKOdE0UwEXHubuzR3fZKY7F/ehS/kiiv2sM1cTz62gCyyR1SmUZYDV7NB7kY4AusYea+5hg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="lib/fabric.js"></script> -->
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="topBar">
+        <div class="dropdown"><span>File</span>
+            <div class="dropdown-content">
+                <p>New Project <span>Ctrl+N</span></p>
+                <p onclick="window.close()">Close project <span>Ctrl+W</span></p>
+                <p onclick="window.location.reload()">Reload Project <span>Ctrl+R</span></p>
+                <p onclick="window.open(window.location,'_blank')">Open In Newtab <span>Ctrl+Alt+N</span></p>
+                <hr>
+                <p>Save Project <span>Ctrl+S</span></p>
+            </div>
+        </div>
+        <div class="dropdown"><span>Edit</span>
+            <div class="dropdown-content">
+                <p>New Text <span>Ctrl+Space</span></p>
+                <hr>
+                <p>Undo <span>Ctrl+Z</span></p>
+                <p>Redo <span>Ctrl+Y</span></p>
+                <hr>
+                <p>Select All <span>Ctrl+A</span></p>
+                <p>Cut <span>Ctrl+X</span></p>
+                <p>Copy <span>Ctrl+C</span></p>
+                <p>Paste <span>Ctrl+V</span></p>
+            </div>
+        </div>
+        <div class="dropdown"><span>View</span>
+            <div class="dropdown-content">
+                <p>Left Panel <span>Ctrl+Shift+W</span></p>
+                <p onclick="dsFor('rightPanel','block');document.getElementById('rightPanel').style.width = '230px'">
+                    right Panel <span>Ctrl+E</span></p>
+                <hr>
+                <p>Full Screen <span>F11</span></p>
+            </div>
+        </div>
+        <i class="gg-loadbar-alt" id="l2"></i>
+    </nav>
+    <div id="loading">
+        <img src="Wedges-3s-200px.svg" alt="laoding">
+        <center>
+            <p class="blink">Loading...</p>
+        </center>
+    </div>
+    <div id="leftPanel">
+        <button onclick="run()" class="sidebar-btn">
+            <ion-icon name="play-outline"></ion-icon>
+        </button>
+        <button onclick="saveFile()" class="sidebar-btn">
+            <ion-icon name="save-outline"></ion-icon>
+        </button>
+        <button onclick="run()" class="sidebar-btn">
+            <ion-icon name="search-outline"></ion-icon>
+        </button>
+        <button onclick="run()" class="sidebar-btn">
+            <ion-icon name="cog-outline"></ion-icon>
+        </button>
+    </div>
+    <div id="centerPanel">
+        <!-- <canvas id="c"></canvas> -->
+        <div id="editor">
+        </div>
+    </div>
+    <div id="rightPanel">
+        <div id="rt">
+            <div id="fileExe">
+                <h4>File Explorer</h4>
+                <hr>
+                <div class="files" id="fileDiv">
+
+                    <button class="w-full" onclick="createFile()">
+                        <center> create file </center>
+                    </button>
+                </div>
+            </div>
+            <div id="console">
+            </div>
+        </div>
+        <input type="text" id="cmd" placeholder="> command">
+        <div id="rightSlider" draggable="true"></div>
+    </div>
+    <div class="box" id="mBox">
+        <p onclick="run()" id="pA"> Run <span>
+                <ion-icon name="chevron-forward-outline" class="gg-icon"></ion-icon>
+            </span></p>
+        <div id="p1" class="boxa">
+            <p>Run with cmd</p>
+            <p>Text 1</p>
+            <p>Text 2</p>
+        </div>
+        <hr>
+        <p onclick="window.location.reload()">Reload<span>Ctrl+R</span></p>
+        <p> Autocomplete <span>Ctrl+SPACE</span></p>
+        <p> Settings <span>Ctrl+,</span></p>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="scripts/save.js"></script>
+    <script src="scripts/files.js"></script>
+    <script src="scripts/auto.js"></script>
+    <script src="scripts/ace.ext.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="controll.js"></script>
+</body>
+
+</html>
